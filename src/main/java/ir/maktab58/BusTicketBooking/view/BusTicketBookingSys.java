@@ -41,6 +41,12 @@ public class BusTicketBookingSys {
         String username = scanner.nextLine().trim();
         System.out.println("Please enter your password: ");
         String password = scanner.nextLine().trim();
+        bookingService.isAminExisted(username, password);
+        showResultToAdmin();
+    }
+
+    private void showResultToAdmin() {
+
     }
 
     private void loginAsUser() {

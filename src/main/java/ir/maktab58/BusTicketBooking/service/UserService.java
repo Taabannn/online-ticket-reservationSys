@@ -1,4 +1,8 @@
-package ir.maktab58.BusTicketBooking.service;/**
+package ir.maktab58.BusTicketBooking.service;
+
+/**
  * @author Taban Soleymani
- */public class UserService {
+ */
+public class UserService {
+
 }
