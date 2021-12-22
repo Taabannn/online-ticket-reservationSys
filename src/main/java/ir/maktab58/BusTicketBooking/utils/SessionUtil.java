@@ -1,4 +1,4 @@
-package ir.maktab58.utils;
+package ir.maktab58.BusTicketBooking.utils;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

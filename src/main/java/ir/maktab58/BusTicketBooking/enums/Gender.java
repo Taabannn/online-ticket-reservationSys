@@ -1,4 +1,4 @@
-package ir.maktab58.enums;
+package ir.maktab58.BusTicketBooking.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

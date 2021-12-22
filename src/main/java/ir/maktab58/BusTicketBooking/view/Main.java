@@ -1,4 +1,4 @@
-package ir.maktab58.view;
+package ir.maktab58.BusTicketBooking.view;
 
 /**
  * @author Taban Soleymani
