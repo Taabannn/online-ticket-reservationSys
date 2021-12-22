@@ -37,10 +37,16 @@ public class BusTicketBookingSys {
     }
 
     private void loginAsAdmin() {
-
+        System.out.println("Please enter your username: ");
+        String username = scanner.nextLine().trim();
+        System.out.println("Please enter your password: ");
+        String password = scanner.nextLine().trim();
     }
 
     private void loginAsUser() {
-
+        System.out.println("Please enter your username: ");
+        String username = scanner.nextLine().trim();
+        System.out.println("Please enter your password: ");
+        String password = scanner.nextLine().trim();
     }
 }
