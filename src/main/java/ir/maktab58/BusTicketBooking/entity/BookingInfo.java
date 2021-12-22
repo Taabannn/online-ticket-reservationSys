@@ -27,7 +27,7 @@ public class BookingInfo {
     private Date dateOfTravel;
     private int departureHour;
     private int capacity;
-    @Enumerated(EnumType.STRING)
-    private BusType busType;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Bus bus;
     private String companyName;
 }

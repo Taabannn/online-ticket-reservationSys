@@ -27,8 +27,8 @@ public class BusTicket {
     private Date dateOfTravel;
     private int departureHour;
     private int seatNumber;
-    @Enumerated(EnumType.STRING)
-    private BusType busType;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Bus bus;
     private String companyName;
     @ManyToOne(cascade = CascadeType.ALL)
     Passenger passenger;
