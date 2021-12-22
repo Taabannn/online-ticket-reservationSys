@@ -27,7 +27,9 @@ public class BookingInfo {
     private Date dateOfTravel;
     private int departureHour;
     private int capacity;
+    private int numOfRemainingSeat;
     @OneToOne(cascade = CascadeType.ALL)
     private Bus bus;
     private String companyName;
+    private long price;
 }
