@@ -1,6 +1,5 @@
 package ir.maktab58.BusTicketBooking.entity;
 
-import ir.maktab58.BusTicketBooking.enums.BusType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
