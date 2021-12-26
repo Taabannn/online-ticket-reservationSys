@@ -18,4 +18,8 @@ public class BookingInfoService {
     public List getListOfBookingInfo(int start, int numOfRecords, String source, String destination) {
         return bookingInfoDao.getListOfBookingInfo(start, numOfRecords, source, destination);
     }
+
+    public List getListOfFilteredInfoByCompanyName(int numOfRecords, String source, String destination, int offset, String companyName) {
+        return bookingInfoDao.getListOfFilteredBookingInfo(numOfRecords, source, destination, offset, companyName);
+    }
 }

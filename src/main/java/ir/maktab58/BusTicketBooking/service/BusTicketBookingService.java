@@ -33,4 +33,8 @@ public class BusTicketBookingService {
     public List getListOfBookingInfo(int start, int numOfRecords, String source, String destination) {
         return bookingInfoService.getListOfBookingInfo(start, numOfRecords, source, destination);
     }
+
+    public List getListOfFilteredInfoByCompanyName(int numOfRecords, String source, String destination, int offset, String companyName) {
+        return bookingInfoService.getListOfFilteredInfoByCompanyName(numOfRecords, source, destination, offset, companyName);
+    }
 }
