@@ -125,10 +125,21 @@ public class BusTicketBookingSys {
                 """);
         String choice = scanner.nextLine().trim();
         switch (choice) {
-            case "1": {
+            case "1" -> {
                 System.out.println("please enter company name");
                 String companyName = scanner.nextLine().trim();
                 return bookingService.getListOfFilteredInfoByCompanyName(numOfRecords, source, destination, offset, companyName);
+            }
+            case "2" -> {
+                System.out.println("please enter bus type");
+                String busType = scanner.nextLine().trim();
+                return bookingService.getListOfFilteredInfoByBusType(numOfRecords, source, destination, offset, busType);
+            }
+            case "3" -> {
+                System.out.println("please enter price range");
+                String priceRange = scanner.nextLine().trim();
+                return bookingService.getListOfFilteredInfoByPriceRange(numOfRecords, source, destination, offset, priceRange);
+
             }
         }
     }
