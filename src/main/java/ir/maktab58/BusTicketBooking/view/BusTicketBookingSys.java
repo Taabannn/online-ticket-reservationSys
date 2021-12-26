@@ -1,8 +1,12 @@
 package ir.maktab58.BusTicketBooking.view;
 
+import ir.maktab58.BusTicketBooking.dto.BookingInfoDTO;
 import ir.maktab58.BusTicketBooking.exceptions.BookingSysEx;
 import ir.maktab58.BusTicketBooking.service.BusTicketBookingService;
 
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -59,8 +63,28 @@ public class BusTicketBookingSys {
     }
 
     private void showUserMenu(long userId) {
-        System.out.println("Please enter source, destination, date of travel(optional) and num of records: ");
+        int start = 0;
+        System.out.println("Please enter source, destination, num of records and date of travel(optional): ");
         String inputLine = scanner.nextLine().trim();
+        List listOfAllRecords;
+        String[] tokens = inputLine.split(" ");
+        String source = tokens[0];
+        String destination = tokens[1];
+        int numOfRecords = Integer.parseInt(tokens[2]);
+        if (tokens.length > 3) {
+            int year = Integer.parseInt(tokens[3]);
+            int month = Integer.parseInt(tokens[4]);
+            int day = Integer.parseInt(tokens[5]);
+            Date date = new Date(year - 1900, month + 1, day);
+            listOfAllRecords = bookingService.getListOfBookingInfo(start, numOfRecords, source, destination, date);
+        } else {
+            listOfAllRecords = bookingService.getListOfBookingInfo(start, numOfRecords, source, destination);
+        }
+        boolean exit = true;
+        while (true) {
+            System.out.println("list of records");
+            listOfAllRecords.forEach(System.out::println);
 
+        }
     }
 }
