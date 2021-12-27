@@ -60,15 +60,15 @@ public class BusTicketBookingService {
 
     public List getListOfFilteredInfoByPriceRange(String source, String destination, int offset, String priceRange) {
         String[] priceRanges = priceRange.split(" ");
-        long downBound = Long.parseLong(priceRanges[0]);
-        long upBound = Long.parseLong(priceRanges[1]);
+        int downBound = Integer.parseInt(priceRanges[0]);
+        int upBound = Integer.parseInt(priceRanges[1]);
         return bookingInfoService.getListOfFilteredInfoByPriceRange(source, destination, offset, upBound, downBound);
     }
 
     public List getListOfFilteredInfoByPriceRange(String source, String destination, int offset, String priceRange, Date date) {
         String[] priceRanges = priceRange.split(" ");
-        long downBound = Long.parseLong(priceRanges[0]);
-        long upBound = Long.parseLong(priceRanges[1]);
+        int downBound = Integer.parseInt(priceRanges[0]);
+        int upBound = Integer.parseInt(priceRanges[1]);
         return bookingInfoService.getListOfFilteredInfoByPriceRange(source, destination, offset, upBound, downBound, date);
     }
 
@@ -95,7 +95,7 @@ public class BusTicketBookingService {
             String nationalCode = tokens[2];
             String phoneNumber = tokens[3];
             int age = Integer.parseInt(tokens[4]);
-            Gender gender = Gender.valueOf(tokens[5]);
+            Gender gender = Gender.MALE.getVal(tokens[5]);
             Passenger passenger = Passenger.builder()
                     .withFirstName(name).withLastName(family)
                     .withNationalCode(nationalCode).withPhoneNumber(phoneNumber)

@@ -20,7 +20,7 @@ import java.util.Date;
 public class BusTicket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
     private String source;
     private String destination;
     @Temporal(TemporalType.DATE)

@@ -198,7 +198,7 @@ public class BookingInfoDao extends BaseDaoImpl<BookingInfo> {
         return list;
     }
 
-    public List getListOfFilteredBookingInfoByPriceRange(String source, String destination, int offset, long upBound, long downBound) {
+    public List getListOfFilteredBookingInfoByPriceRange(String source, String destination, int offset, int upBound, int downBound) {
         Session session = SessionUtil.getSession();
         Transaction transaction = session.beginTransaction();
 
@@ -229,7 +229,7 @@ public class BookingInfoDao extends BaseDaoImpl<BookingInfo> {
         return list;
     }
 
-    public List getListOfFilteredBookingInfoByPriceRange(String source, String destination, int offset, long upBound, long downBound, Date date) {
+    public List getListOfFilteredBookingInfoByPriceRange(String source, String destination, int offset, int upBound, int downBound, Date date) {
         Session session = SessionUtil.getSession();
         Transaction transaction = session.beginTransaction();
 

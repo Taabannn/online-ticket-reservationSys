@@ -43,11 +43,11 @@ public class BookingInfoService {
         return bookingInfoDao.getListOfFilteredBookingInfoByBusType(source, destination, offset, busTypeEnum, date);
     }
 
-    public List getListOfFilteredInfoByPriceRange(String source, String destination, int offset, long upBound, long downBound) {
+    public List getListOfFilteredInfoByPriceRange(String source, String destination, int offset, int upBound, int downBound) {
         return bookingInfoDao.getListOfFilteredBookingInfoByPriceRange(source, destination, offset, upBound, downBound);
     }
 
-    public List getListOfFilteredInfoByPriceRange(String source, String destination, int offset, long upBound, long downBound, Date date) {
+    public List getListOfFilteredInfoByPriceRange(String source, String destination, int offset, int upBound, int downBound, Date date) {
         return bookingInfoDao.getListOfFilteredBookingInfoByPriceRange(source, destination, offset, upBound, downBound, date);
     }
 

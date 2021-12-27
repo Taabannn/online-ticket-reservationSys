@@ -79,9 +79,8 @@ public class BusTicketBookingSys {
 
     private void showUserMenu(int numOfRecords, String source, String destination, long userId) {
         int offset = 0;
-        boolean exit = true;
+        boolean exit = false;
         boolean filter = false;
-        String filterOptions = "";
         while (!exit) {
             List listOfRecords;
             if (!filter) {
@@ -141,7 +140,8 @@ public class BusTicketBookingSys {
         } else {
             Map<Integer, Object> map = new HashMap<>();
             for (Object element : listOfFilteredRecords) {
-                map.put(offset + listOfFilteredRecords.indexOf(element), element);
+                if (listOfFilteredRecords.indexOf(element) < numOfRecords)
+                    map.put(offset + listOfFilteredRecords.indexOf(element), element);
             }
             map.forEach((key, value) -> System.out.println(key + " " + value));
         }
@@ -153,8 +153,7 @@ public class BusTicketBookingSys {
                 1) company name
                 2) bus type
                 3) price range 
-                4) range of departure hour
-                """);
+                4) range of departure hour""");
         String choice = scanner.nextLine().trim();
         switch (choice) {
             case "1" -> {
@@ -189,8 +188,7 @@ public class BusTicketBookingSys {
                 1) company name
                 2) bus type
                 3) price range 
-                4) range of departure hour
-                """);
+                4) range of departure hour""");
         String choice = scanner.nextLine().trim();
         switch (choice) {
             case "1" -> {
@@ -253,7 +251,7 @@ public class BusTicketBookingSys {
 
     private void showUserMenu(int numOfRecords, String source, String destination, Date date, long userId) {
         int offset = 0;
-        boolean exit = true;
+        boolean exit = false;
         boolean filter = false;
         while (!exit) {
             List listOfRecords;

@@ -19,7 +19,7 @@ import javax.persistence.*;
 public class Passenger {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
     @Column(nullable = false)
     private String firstName;
     @Column(nullable = false)
