@@ -31,16 +31,32 @@ public class BookingInfoService {
         return bookingInfoDao.getListOfFilteredBookingInfoByCompanyName(source, destination, offset, companyName);
     }
 
+    public List getListOfFilteredInfoByCompanyName(String source, String destination, int offset, String companyName, Date date) {
+        return bookingInfoDao.getListOfFilteredBookingInfoByCompanyName(source, destination, offset, companyName, date);
+    }
+
     public List getListOfFilteredInfoByBusType(String source, String destination, int offset, BusType busTypeEnum) {
         return bookingInfoDao.getListOfFilteredBookingInfoByBusType(source, destination, offset, busTypeEnum);
+    }
+
+    public List getListOfFilteredInfoByBusType(String source, String destination, int offset, BusType busTypeEnum, Date date) {
+        return bookingInfoDao.getListOfFilteredBookingInfoByBusType(source, destination, offset, busTypeEnum, date);
     }
 
     public List getListOfFilteredInfoByPriceRange(String source, String destination, int offset, long upBound, long downBound) {
         return bookingInfoDao.getListOfFilteredBookingInfoByPriceRange(source, destination, offset, upBound, downBound);
     }
 
+    public List getListOfFilteredInfoByPriceRange(String source, String destination, int offset, long upBound, long downBound, Date date) {
+        return bookingInfoDao.getListOfFilteredBookingInfoByPriceRange(source, destination, offset, upBound, downBound, date);
+    }
+
     public List getListOfFilteredInfoByDepartureHourRange(String source, String destination, int offset, int upBound, int downBound) {
         return bookingInfoDao.getListOfFilteredBookingInfoByDepartureHourRange(source, destination, offset, upBound, downBound);
+    }
+
+    public List getListOfFilteredInfoByDepartureHourRange(String source, String destination, int offset, int upBound, int downBound, Date date) {
+        return bookingInfoDao.getListOfFilteredBookingInfoByDepartureHourRange(source, destination, offset, upBound, downBound, date);
     }
 
     public void updateNumberOfRemainingSeat(BookingInfo bookingInfo) {

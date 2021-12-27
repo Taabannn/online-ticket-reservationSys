@@ -183,6 +183,42 @@ public class BusTicketBookingSys {
         }
     }
 
+    private List getListOfFilteredRecords(String source, String destination, int offset, Date date) {
+        System.out.println("""
+                You can filter records based on:
+                1) company name
+                2) bus type
+                3) price range 
+                4) range of departure hour
+                """);
+        String choice = scanner.nextLine().trim();
+        switch (choice) {
+            case "1" -> {
+                System.out.println("please enter company name");
+                String companyName = scanner.nextLine().trim();
+                return bookingService.getListOfFilteredInfoByCompanyName(source, destination, offset, companyName, date);
+            }
+            case "2" -> {
+                System.out.println("please enter bus type");
+                String busType = scanner.nextLine().trim();
+                return bookingService.getListOfFilteredInfoByBusType(source, destination, offset, busType, date);
+            }
+            case "3" -> {
+                System.out.println("please enter price range");
+                String priceRange = scanner.nextLine().trim();
+                return bookingService.getListOfFilteredInfoByPriceRange(source, destination, offset, priceRange, date);
+            }
+            case "4" -> {
+                System.out.println("please enter departure hour range");
+                String departureHourRange = scanner.nextLine().trim();
+                return bookingService.getListOfFilteredInfoByDepartureHourRange(source, destination, offset, departureHourRange, date);
+            }
+            default -> throw BookingSysEx.builder()
+                    .message("Your choice must be an integer between 1 to 4.")
+                    .errorCode(400).build();
+        }
+    }
+
     private List getListOfRecords(int numOfRecords, String source, String destination, int offset) {
         List listOfRecords;
         System.out.println("list of records");
@@ -199,32 +235,51 @@ public class BusTicketBookingSys {
         return listOfRecords;
     }
 
+    private List getListOfRecords(int numOfRecords, String source, String destination, int offset, Date date) {
+        List listOfRecords;
+        System.out.println("list of records");
+        listOfRecords = bookingService.getListOfBookingInfo(offset, numOfRecords, source, destination, date);
+        if (listOfRecords.size() == 0 && offset != 1) {
+            System.out.println("There is nothing to show.");
+        } else {
+            Map<Integer, Object> map = new HashMap<>();
+            for (Object element : listOfRecords) {
+                map.put(offset + listOfRecords.indexOf(element), element);
+            }
+            map.forEach((key, value) -> System.out.println(key + " " + value));
+        }
+        return listOfRecords;
+    }
+
     private void showUserMenu(int numOfRecords, String source, String destination, Date date, long userId) {
         int offset = 0;
         boolean exit = true;
         boolean filter = false;
-        String filterOptions = "";
         while (!exit) {
+            List listOfRecords;
             if (!filter) {
-                System.out.println("list of records");
-                listOfAllRecords.forEach(System.out::println);
+                listOfRecords = getListOfRecords(numOfRecords, source, destination, offset, date);
+            } else {
+                listOfRecords = listOfFilteredRecords;
+                showListOfFilteredRecords(numOfRecords, offset);
             }
-
             System.out.println("""
                     1) previous page
                     2) next page
                     3) filter
-                    4) exit""");
+                    4) reserve ticket
+                    5) exit""");
             String choice = scanner.nextLine().trim();
             try {
                 switch (choice) {
                     case "1" -> offset = evaluateOffset(offset, numOfRecords);
-                    case "2" -> offset = evaluateOffset(offset, numOfRecords, listOfAllRecords.size());
+                    case "2" -> offset = evaluateOffset(offset, numOfRecords, listOfRecords.size());
                     case "3" -> {
                         filter = true;
-                        filterOptions = getUserFilterOptions(filterOptions);
+                        listOfFilteredRecords = getListOfFilteredRecords(source, destination, offset, date);
                     }
-                    case "4" -> exit = true;
+                    case "4" -> reserveTicket(listOfRecords, offset, userId);
+                    case "5" -> exit = true;
                     default -> throw BookingSysEx.builder()
                             .message("Your choice must be an integer between 1 to 4.")
                             .errorCode(400).build();

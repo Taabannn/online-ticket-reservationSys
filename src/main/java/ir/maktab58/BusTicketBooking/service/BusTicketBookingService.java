@@ -44,9 +44,18 @@ public class BusTicketBookingService {
         return bookingInfoService.getListOfFilteredInfoByCompanyName(source, destination, offset, companyName);
     }
 
+    public List getListOfFilteredInfoByCompanyName(String source, String destination, int offset, String companyName, Date date) {
+        return bookingInfoService.getListOfFilteredInfoByCompanyName(source, destination, offset, companyName, date);
+    }
+
     public List getListOfFilteredInfoByBusType(String source, String destination, int offset, String busType) {
         BusType busTypeEnum = BusType.valueOf(busType);
         return bookingInfoService.getListOfFilteredInfoByBusType(source, destination, offset, busTypeEnum);
+    }
+
+    public List getListOfFilteredInfoByBusType(String source, String destination, int offset, String busType, Date date) {
+        BusType busTypeEnum = BusType.valueOf(busType);
+        return bookingInfoService.getListOfFilteredInfoByBusType(source, destination, offset, busTypeEnum, date);
     }
 
     public List getListOfFilteredInfoByPriceRange(String source, String destination, int offset, String priceRange) {
@@ -56,11 +65,25 @@ public class BusTicketBookingService {
         return bookingInfoService.getListOfFilteredInfoByPriceRange(source, destination, offset, upBound, downBound);
     }
 
+    public List getListOfFilteredInfoByPriceRange(String source, String destination, int offset, String priceRange, Date date) {
+        String[] priceRanges = priceRange.split(" ");
+        long downBound = Long.parseLong(priceRanges[0]);
+        long upBound = Long.parseLong(priceRanges[1]);
+        return bookingInfoService.getListOfFilteredInfoByPriceRange(source, destination, offset, upBound, downBound, date);
+    }
+
     public List getListOfFilteredInfoByDepartureHourRange(String source, String destination, int offset, String departureHourRange) {
         String[] departureHourRanges = departureHourRange.split(" ");
         int downBound = Integer.parseInt(departureHourRanges[0]);
         int upBound = Integer.parseInt(departureHourRanges[1]);
         return bookingInfoService.getListOfFilteredInfoByDepartureHourRange(source, destination, offset, upBound, downBound);
+    }
+
+    public List getListOfFilteredInfoByDepartureHourRange(String source, String destination, int offset, String departureHourRange, Date date) {
+        String[] departureHourRanges = departureHourRange.split(" ");
+        int downBound = Integer.parseInt(departureHourRanges[0]);
+        int upBound = Integer.parseInt(departureHourRanges[1]);
+        return bookingInfoService.getListOfFilteredInfoByDepartureHourRange(source, destination, offset, upBound, downBound, date);
     }
 
     public void registerNewTicket(Object o, String inputLine, long userId) {
