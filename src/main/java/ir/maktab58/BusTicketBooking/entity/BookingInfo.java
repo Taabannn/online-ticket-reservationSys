@@ -1,6 +1,5 @@
-package ir.maktab58.entity;
+package ir.maktab58.BusTicketBooking.entity;
 
-import ir.maktab58.enums.BusType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,19 +16,19 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder(setterPrefix = "with")
-public class BusTicket {
+public class BookingInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
     private String source;
     private String destination;
     @Temporal(TemporalType.DATE)
     private Date dateOfTravel;
     private int departureHour;
-    private int seatNumber;
-    @Enumerated(EnumType.STRING)
-    private BusType busType;
+    private int capacity;
+    private int numOfRemainingSeat;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Bus bus;
     private String companyName;
-    @ManyToOne(cascade = CascadeType.ALL)
-    Passenger passenger;
+    private long price;
 }

@@ -1,6 +1,6 @@
-package ir.maktab58.dao;
+package ir.maktab58.BusTicketBooking.dao;
 
-import ir.maktab58.utils.SessionUtil;
+import ir.maktab58.BusTicketBooking.utils.SessionUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;

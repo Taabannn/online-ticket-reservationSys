@@ -1,4 +1,4 @@
-package ir.maktab58.dao;
+package ir.maktab58.BusTicketBooking.dao;
 
 import java.util.List;
 import java.util.Map;

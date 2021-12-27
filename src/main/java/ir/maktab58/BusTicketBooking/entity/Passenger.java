@@ -1,6 +1,6 @@
-package ir.maktab58.entity;
+package ir.maktab58.BusTicketBooking.entity;
 
-import ir.maktab58.enums.Gender;
+import ir.maktab58.BusTicketBooking.enums.Gender;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,7 +19,7 @@ import javax.persistence.*;
 public class Passenger {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
     @Column(nullable = false)
     private String firstName;
     @Column(nullable = false)
