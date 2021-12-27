@@ -42,4 +42,8 @@ public class BookingInfoService {
     public List getListOfFilteredInfoByDepartureHourRange(String source, String destination, int offset, int upBound, int downBound) {
         return bookingInfoDao.getListOfFilteredBookingInfoByDepartureHourRange(source, destination, offset, upBound, downBound);
     }
+
+    public void updateNumberOfRemainingSeat(BookingInfo bookingInfo) {
+        bookingInfoDao.updateNumberOfRemainingSeats(bookingInfo);
+    }
 }

@@ -23,7 +23,7 @@ import java.util.List;
 /**
  * @author Taban Soleymani
  */
-public class BookingInfoDao extends BaseDaoImpl<BookingInfoDao> {
+public class BookingInfoDao extends BaseDaoImpl<BookingInfo> {
     public List getListOfBookingInfo(int start, int numOfRecords, String source, String destination, Date date) {
         Session session = SessionUtil.getSession();
         Transaction transaction = session.beginTransaction();
@@ -220,5 +220,9 @@ public class BookingInfoDao extends BaseDaoImpl<BookingInfoDao> {
                     .errorCode(400).build();
         }
         return bookingInfo;
+    }
+
+    public void updateNumberOfRemainingSeats(BookingInfo bookingInfo) {
+        update(bookingInfo);
     }
 }

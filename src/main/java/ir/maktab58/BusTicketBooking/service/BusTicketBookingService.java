@@ -2,6 +2,7 @@ package ir.maktab58.BusTicketBooking.service;
 
 import ir.maktab58.BusTicketBooking.dto.BookingInfoDTO;
 import ir.maktab58.BusTicketBooking.entity.BookingInfo;
+import ir.maktab58.BusTicketBooking.entity.BusTicket;
 import ir.maktab58.BusTicketBooking.entity.Passenger;
 import ir.maktab58.BusTicketBooking.entity.User;
 import ir.maktab58.BusTicketBooking.enums.BusType;
@@ -77,6 +78,19 @@ public class BusTicketBookingService {
                     .withNationalCode(nationalCode).withPhoneNumber(phoneNumber)
                     .withAge(age).withGender(gender).build();
             BookingInfo bookingInfo = bookingInfoService.getBookingInfo(bookingInfoDTO);
+            BusTicket busTicket = BusTicket.builder()
+                    .withSource(bookingInfo.getSource())
+                    .withDestination(bookingInfo.getDestination())
+                    .withBus(bookingInfo.getBus())
+                    .withDateOfTravel(bookingInfo.getDateOfTravel())
+                    .withSeatNumber(bookingInfo.getCapacity() - bookingInfo.getNumOfRemainingSeat())
+                    .withPassenger(passenger)
+                    .withDepartureHour(bookingInfo.getDepartureHour())
+                    .withCompanyName(bookingInfo.getCompanyName())
+                    .withDateOfPurchase(new Date()).build();
+            busTicketService.saveNewTicket(busTicket);
+            bookingInfo.setNumOfRemainingSeat(bookingInfo.getNumOfRemainingSeat() - 1);
+            bookingInfoService.updateNumberOfRemainingSeat(bookingInfo);
         }
     }
 }
