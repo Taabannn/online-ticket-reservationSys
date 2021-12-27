@@ -47,7 +47,8 @@ public class BusTicketBookingSys {
     }
 
     private void showResultToAdmin() {
-
+        List listOfReservationInfo = bookingService.getListOfReservationInfo();
+        listOfReservationInfo.stream().forEach(System.out::println);
     }
 
     private void loginAsUser() {

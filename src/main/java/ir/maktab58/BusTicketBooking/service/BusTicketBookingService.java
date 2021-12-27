@@ -116,4 +116,8 @@ public class BusTicketBookingService {
             bookingInfoService.updateNumberOfRemainingSeat(bookingInfo);
         }
     }
+
+    public List getListOfReservationInfo() {
+        return busTicketService.getResultOfReservation();
+    }
 }
